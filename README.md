@@ -4,7 +4,7 @@ CubemapViaGAN is a project aimed at generating cubemap images using Generative A
 
 ## Project Overview
 
-The goal of this project is to generate high-quality cubemap images using GANs with any image. At the image of writing this, I approach the problem like an inpainting problem. This is so that the other parts of the image generated would have a certain flow to one another. See my scuffed diagram explaining it below:
+The goal of this project is to generate high-quality cubemap images using GANs with any image. At the time of writing this, I approach the problem like an inpainting problem. This is so that the other parts of the image generated would have a certain flow to one another. See my scuffed diagram explaining it below:
 
 ![Scuffed explanation](https://github.com/ZeroMeOut/CubemapViaGAN/assets/63326326/6f5578a9-7177-46a1-bda9-241bd51f6697)
 
