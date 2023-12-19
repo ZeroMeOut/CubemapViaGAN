@@ -29,7 +29,7 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## Contact
 
-For questions or inquiries related to the project, please contact [Your Name or Contact Information].
+For questions or inquiries related to the project, please contact me at twitter (link is on my GitHub profile)
 
 
  
