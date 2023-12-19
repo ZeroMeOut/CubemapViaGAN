@@ -5,10 +5,11 @@ CubemapViaGAN is a project aimed at generating cubemap images using Generative A
 ## Project Overview
 
 The goal of this project is to generate high-quality cubemap images using GANs with any image. At the image of writing this, I approach the problem like an inpainting problem. This is so that the other parts of the image generated would have a certain flow to one another. See my scuffed diagram explaining it below:
+
 ![Scuffed explanation](https://github.com/ZeroMeOut/CubemapViaGAN/assets/63326326/6f5578a9-7177-46a1-bda9-241bd51f6697)
 
 For the model, I am using a combination of the model from the paper ![Image Inpainting for Irregular Holes Using Partial Convolutions](https://arxiv.org/pdf/1804.07723v2.pdf) and a binary classifier. The first being a generator and the second a discriminator.
-If you want a diagram representation, click ![here](https://github.com/ayulockin/deepimageinpainting/blob/master/images/model_partial_conv.png)
+If you want a diagram representation, click ![here](https://github.com/ayulockin/deepimageinpainting)
 
 ## Work in Progress
 
