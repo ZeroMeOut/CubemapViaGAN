@@ -110,14 +110,17 @@ class up_layers(torch.nn.Module):
     def forward(self, x: Tensor4d, x_mask: Tensor4d, contat_x: Tensor4d, contat_x_mask: Tensor4d):
         x = F.interpolate(x, scale_factor=2)
         x_mask = F.interpolate(x_mask, scale_factor=2)
-        x, x_mask = torch.cat([x, contat_x], dim=1), torch.cat([x_mask, contat_x_mask], dim=1)
-        x, x_mask = self.pconv(x, x_mask)
-        if self.relu == "yes":
-            x, x_mask = self.leaky_relu(x), self.leaky_relu(x_mask)
-        else:
-            pass
-        return x, x_mask
-
+        try:
+            x, x_mask = torch.cat([x, contat_x], dim=1), torch.cat([x_mask, contat_x_mask], dim=1)
+            x, x_mask = self.pconv(x, x_mask)
+            if self.relu == "yes":
+                x, x_mask = self.leaky_relu(x), self.leaky_relu(x_mask)
+            else:
+                pass
+            return x, x_mask
+        except RuntimeError:
+            return x, contat_x
+        
 
 class generator(torch.nn.Module):
     def __init__(self, in_channels=3, out_channels=3):
@@ -142,7 +145,7 @@ class generator(torch.nn.Module):
         x2, x2_mask = self.pconv2(x1, x1_mask)
         x3, x3_mask = self.pconv3(x2, x2_mask)
         x4, x4_mask = self.pconv4(x3, x3_mask)
-        x5, x5_mask = self.pconv5to8(x4, x4_mask)
+        x5, x5_mask = self.pconv5to8(x4, x4_mask) #torch.Size([1, 512, 7, 7]) ????
         x6, x6_mask = self.pconv5to8(x5, x5_mask) #torch.Size([1, 512, 8, 8])
         x7, x7_mask = self.pconv5to8(x6, x6_mask) #torch.Size([1, 512, 4, 4])
         x8, x8_mask = self.pconv5to8(x7, x7_mask) #torch.Size([1, 512, 2, 2])
